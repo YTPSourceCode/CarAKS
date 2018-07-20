@@ -13,9 +13,10 @@ while 1:
         continue
     if opcode == 26:
         try:
-            minvolt = int(clear_data[13:17])
-            maxvolt = int(clear_data[18:22])
+            minvolt = int(clear_data[13:17])/1000
+            maxvolt = int(clear_data[18:22])/1000
             isi = float(clear_data[23:26])/10
+            battery = float(((minvolt+maxvolt)/2)*20)*1.01
         except:
             continue
         if minvolt<3300:
